@@ -42,8 +42,8 @@ ex9PTindentificacao <- ex9PT[ex9PT$legislator_party == "PT",] #somente os que s�
 ##Percebi um problema, eu escolhi os que possuiam a orientação de votar não. Todavia, a orientação de alguns não se manteve na votação, acabando por votar em "sim" ou se abster, logo, refiz o exercicio:
 ex9correcao <- ex9[ex9$legislator_party == "PT" & ex9$legislator_vote == "Nao",]
 #Para saber quantos são:
-ex9correcao <- ex9[ex9$legislator_party == "PT" & ex9$legislator_vote == "Nao" & ex9$rollcall_subject == "SEGUNDO TURNO",]
-ex9correcao1 <- ex9correcao$legislator_vote == "Nao"
+ex9correcao <- ex9[ex9$legislator_party == "PT" & ex9$legislator_vote == "Nao" & ex9$rollcall_subject == "SEGUNDO TURNO",] #está errado pois nao adianta somente quem votou nao, pois há abstencao e nao comparecimento a sessao.
+ex9correcao1 <- ex9correcao$legislator_vote == "Nao" #outra vez, apenas "nao" nao trará os dados totais dos que distoaram do governo. 
 summary(ex9correcao1)
 #Mode    TRUE    NA's 
 #logical       4       2  Dessa forma, 4 do PT votaram contra
